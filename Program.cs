@@ -2,18 +2,16 @@ using System;
 
 public class Program
 {
-    static void Main()
+    public static void Main()
     {
-        int i = 1;
-        while(i==1)
+        bool first = true; string[] str = { "" }; Random numGen = new Random();
+        while (true)
         {
             Console.Clear();
-            Console.Write("List seperated with commas\n\n> ");
-            var str = Console.ReadLine().Split(',');
-            Random numGen = new Random();
-            Console.Clear();
-            Console.Write(str[numGen.Next(0, str.Length)]);
-            Console.ReadKey();
+            Console.Write(first ? "List seperated with commas\n\n> " : str[numGen.Next(0, str.Length)]);
+            if (first) str = Console.ReadLine().Split(',');
+            else Console.ReadKey();
+            first = !first;
         }
     }
 }
